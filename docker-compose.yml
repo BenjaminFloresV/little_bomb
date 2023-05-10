@@ -1,0 +1,14 @@
+version: '3.3'
+
+volumes:
+  - redis_broker_data: {}
+
+services:
+  redis_broker:
+    image: redis:6.2
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_broker_data:/data
+    ports:
+      - "6382:6379"
+    env_file: .env
